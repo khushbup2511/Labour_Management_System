@@ -26,11 +26,11 @@ li a {
   margin-left: 45px;
 }
 
-
 li a:hover:not(.active) {
   background-color: rgb(98, 95, 95);
   color: white;
 }
+
 .dropbtn {
   background-color: black;
   color: white;
@@ -54,13 +54,15 @@ li a:hover:not(.active) {
 }
 
 .dropdown-content a {
-  color: black;
+  color: white;  /* Ensure text is white by default */
   padding: 12px 25px;
- 
   display: block;
 }
 
-.dropdown-content a:hover {background-color:black}
+.dropdown-content a:hover {
+  background-color: black; /* Keep the background black */
+  color: white;  /* Change the text color to white on hover */
+}
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -69,16 +71,17 @@ li a:hover:not(.active) {
 .dropdown:hover .dropbtn {
   background-color: black;
 }
+
 nav {
   margin: 20px 450px;
   margin-top:-10px ;
-
   position: relative;
   width: 250px;
   height: 40px;
   background-color: black;
   font-size: 0;
 }
+
 nav a {
   line-height: 40px;
   height: 100%;
@@ -92,6 +95,7 @@ nav a {
   color: white;
   cursor: pointer;
 }
+
 nav .animation {
   position: absolute;
   height: 100%;
@@ -100,38 +104,44 @@ nav .animation {
   transition: all .5s ease 0s;
   border-radius: 8px;
 }
+
 a:nth-child(1) {
   width: 100px;
 }
+
 a:nth-child(2) {
   width: 110px;
 }
+
 a:nth-child(3) {
   width: 100px;
 }
+
 a:nth-child(4) {
   width: 160px;
 }
+
 a:nth-child(5) {
   width: 120px;
 }
+
 nav .start-home, a:nth-child(1):hover~.animation {
   width: 90px;
   left: 0;
   background-color: GRAY;
-
 }
+
 nav .start-about, a:nth-child(2):hover~.animation {
   width: 80px;
   left: 95px;
   background-color: gray;
 }
+
 nav .start-blog, a:nth-child(3):hover~.animation {
   width: 90px;
   left: 175px;
   background-color: gray;
 }
-
 
 h1 {
   text-align: center;
@@ -144,27 +154,24 @@ h1 {
 }
 
 p {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-    color: #ecf0f1;
-    font-family: 'Cherry Swash',cursive;
-    font-size: 16px;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #ecf0f1;
+  font-family: 'Cherry Swash', cursive;
+  font-size: 16px;
 }
 
 span {
-    color: #2BD6B4;
+  color: #2BD6B4;
 }
 
 * {  
   margin: 0;
   padding: 0;
   margin-left: -20px;
-  
 }
-
-
 
 #nav-bar {
   margin: 50px;
@@ -173,12 +180,9 @@ span {
   border-radius: 4%;
   background-color: white;
   -webkit-box-shadow: -2px 3px 2px 0px rgba(5, 0, 0, 0.11);
-  -moz-box-shadow:    -2px 3px 2px 0px rgba(5, 0, 0, 0.11);
-  box-shadow:         -2px 3px 2px 0px rgba(5, 0, 0, 0.11);
+  -moz-box-shadow: -2px 3px 2px 0px rgba(5, 0, 0, 0.11);
+  box-shadow: -2px 3px 2px 0px rgba(5, 0, 0, 0.11);
 }
-
-
-
 
 </style>
 </head>
@@ -187,29 +191,29 @@ span {
 <ul>
     <center>
   <li style="color: white; font-size:12px ;"><strong style="font-size: 45px;">Labor EP</strong></li></center><br><br>
-  <li style="margin-left: -17px;"><a  href="file:///K:/Project%20ultimite/Dashboard.html#home" >DASHBOARD</a></li>
+  <li style="margin-left: -17px;"><a href="file:///K:/Project%20ultimite/Dashboard.html#home">DASHBOARD</a></li>
   <li><div class="dropdown">
     <button class="dropbtn" style="font-size: 14PX;">SERVICES</button>
     <div class="dropdown-content">
-    <a href="CARPENTER.html" style="color: white; width:170px ;">Carpenter</a>
-    <a href="PAINTER.html" style="color: white; width:170px">Painter</a>
-    <a href="Barber" style="color: white; width:170px">Barber</a>
-    <a href="GARDNER.html" style="color: white; width:170px">Gardener</a>
-    <a href="CARETAKER.html" style="color: white; width:170px">Caretaker</a>
-    <a href="CLEANER.html" style="color: white; width:170px">Cleaner</a>
-    <a href="GAURD.html" style="color: white; width:170px">Watchman</a>
-    <a href="ELECTRIATION.html" style="color: white; width:170px">Electrician</a>
-    <a href="Construction Worker.html" style="color: white; width:170px">Construction Worker</a>
-    <a href="PLUMBER.html" style="color: white; width:170px">Plumber</a>
+    <a href="javascript:void(0);" onclick="redirectToService('Carpenter')">Carpenter</a>
+    <a href="javascript:void(0);" onclick="redirectToService('Painter')">Painter</a>
+    <a href="javascript:void(0);" onclick="redirectToService('Barber')">Barber</a>
+    <a href="javascript:void(0);" onclick="redirectToService('Gardener')">Gardener</a>
+    <a href="javascript:void(0);" onclick="redirectToService('Caretaker')">Caretaker</a>
+    <a href="javascript:void(0);" onclick="redirectToService('Cleaner')">Cleaner</a>
+    <a href="javascript:void(0);" onclick="redirectToService('Watchman')">Watchman</a>
+    <a href="javascript:void(0);" onclick="redirectToService('Electrician')">Electrician</a>
+    <a href="javascript:void(0);" onclick="redirectToService('Construction Worker')">Construction Worker</a>
+    <a href="javascript:void(0);" onclick="redirectToService('Plumber')">Plumber</a>
     </div>
   </div></li>
   <li><a href="Payments.html">PAYMENT</a></li><br>
   <li><a href="#contact">HISTORY</a></li>
-  
   <li> <a href="Enquery.html">ENQUERY</a></li>
   <li><a href="FAQ.html">FAQ's</a></li>
   <li><a href="#contact">HELP & CONTACT</a></li>
 </ul>
+
 <div class="nav" style="height: 40px;">
     <nav>
         <a href="Home.html">HOME</a>
@@ -217,6 +221,7 @@ span {
         <div class="animation start-home"></div>
       </nav>
     </div>
+
 <div style="margin-left:21%; width: 1198px;height: 1200px;background-color: #94c0be; border-radius: 20px;position: absolute;">
 
    <center><div style="height: 100px; width: 900px; background-color: #94c0be; border-radius: 20px;margin-left: 10px;margin-top:20px;">
@@ -239,22 +244,26 @@ span {
 
 <center><div style="height: 250px;width: 1100px;background-color: #94c0be; border-radius: 20px;"> 
      <marquee ><img src="painter11.jpg" style="border-radius: 20px;background-attachment: fixed;"><img src="carpenter1.jpg" style="border-radius: 20px;background-attachment: fixed; margin-left: 20px;height: 180px;"><img src="child11.jpg" style="border-radius: 20px;background-attachment: fixed;margin-left: 20px;"><img src="cleaner2.jpg" style="border-radius: 20px;background-attachment: fixed;margin-left: 20px;"><img src="painter11.jpg" style="border-radius: 20px;background-attachment: fixed;margin-left: 20px;"> <img src="plumber12.jpg" style="border-radius: 20px;background-attachment: fixed;margin-left: 20px;"><img src="plumber13.jpg" style="border-radius: 20px;background-attachment: fixed;margin-left: 20px;"><img src="gardener13.jpg" style="border-radius: 20px;background-attachment: fixed;margin-left: 20px;"><img src="guard12.jpg" style="border-radius: 20px;background-attachment: fixed;margin-left: 20px;"><img src="guard17.jpg" style="border-radius: 20px;background-attachment: fixed;margin-left: 20px;"></marquee>
-    
 </div>
 </center>
 
+<!-- Example Service Boxes -->
 <div>
+  <div style="height: 200px; width: 300px; background-color:white; border-radius: 20px;margin-left: 100px;margin-top:20px;background-image: url(cleaner11.jpg);"><center><button onclick="redirectToService('Cleaner')" style="margin-top: 140px;margin-left: 20px;height: 30px;width: 80px;border-radius: 10px; background-color: #000000;color: white;">CLEANER </button></center></div>
+  <div style="height: 200px; width: 300px; background-color:white; border-radius: 20px;margin-left: 450px;margin-top:-200px;background-image: url(child11.jpg);"><center><button onclick="redirectToService('Caretaker')" style="margin-top: 140px;margin-left: 20px;height: 30px;width: 100px;border-radius: 10px; background-color: #000000;color: white;">CARE TAKER</button></center> </div>
+  <div style="height: 200px; width: 300px; background-color:white; border-radius: 20px;margin-left: 800px;margin-top:-200px;background-image: url(gardener12.jpg);"><center><button onclick="redirectToService('Gardener')" style="margin-top: 140px;margin-left: 20px;height: 30px;width: 80px;border-radius: 10px; background-color: #000000;color: white;">GARDNER </button></center></div>
+</div>
 
-<div   style="height: 200px; width: 300px; background-color:white; border-radius: 20px;margin-left: 100px;margin-top:20px;background-image: url(cleaner11.jpg);"><center><button style="margin-top: 140px;margin-left: 20px;height: 30px;width: 80px;border-radius: 10px; background-color: #000000;color: white;">CLEANER </button></center></div>
-<div  style="height: 200px; width: 300px; background-color:white; border-radius: 20px;margin-left: 450px;margin-top:-200px;background-image: url(child11.jpg);"><center><button style="margin-top: 140px;margin-left: 20px;height: 30px;width: 100px;border-radius: 10px; background-color: #000000;color: white;">CARE TAKER</button></center> </div>
-<div  style="height: 200px; width: 300px; background-color:white; border-radius: 20px;margin-left: 800px;margin-top:-200px;background-image: url(gardener12.jpg);"><center><button style="margin-top: 140px;margin-left: 20px;height: 30px;width: 80px;border-radius: 10px; background-color: #000000;color: white;">GARDNER </button></center></div>
-<div  style="height: 200px; width: 300px; background-color:white; border-radius: 20px;margin-left: 100px;margin-top:20px;background-image: url(painter1.jpg);"><center><button style="margin-top: 140px;margin-left: 20px;height: 30px;width: 80px;border-radius: 10px; background-color: #000000;color: white;">PAINTER </button></center></div>
-<div  style="height: 200px; width: 300px; background-color:white; border-radius: 20px;margin-left: 450px;margin-top:-200px;background-image: url(cleaner15.jpg);"><center><button style="margin-top: 140px;margin-left: 20px;height: 30px;width: 80px;border-radius: 10px; background-color: #000000;color: white;">CLEANER </button></center></div>
-<div  style="height: 200px; width: 300px; background-color:white; border-radius: 20px;margin-left: 800px;margin-top:-200px;background-image: url(guard11.jpg);"><center><button style="margin-top: 140px;margin-left: 20px;height: 30px;width: 80px;border-radius: 10px; background-color: #000000;color: white;">GAURD </button></center></div>
-</div><br>
-<marquee ><h2 style="font-size: 20px; color: gray;">........Most Demanding services........</h2></marquee>
+<br>
+<marquee><h2 style="font-size: 20px; color: gray;">........Most Demanding services........</h2></marquee>
 
-
+<script>
+// Function to handle redirection to the service page with the skill parameter
+function redirectToService(skill) {
+    window.location.href = `carpenter.html?skill=${encodeURIComponent(skill)}`;
+}
+</script>
 
 </body>
 </html>
+ 

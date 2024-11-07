@@ -80,5 +80,18 @@ public class EmployeeController {
     }
 
     // Fetch employees by skill
-   
+    @GetMapping("/getEmployeesBySkill")
+public ResponseEntity<?> getEmployeesBySkill(@RequestParam("skill") String skill) {
+    try {
+        List<Employee> employees = employeeRepo.findEmployeesBySkill(skill);
+        if (employees.isEmpty()) {
+            return new ResponseEntity<>("No employees found with the specified skill.", HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    } catch (Exception e) {
+        return new ResponseEntity<>("Error retrieving employees by skill: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
+
+    
 }

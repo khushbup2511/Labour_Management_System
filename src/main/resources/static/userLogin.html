@@ -187,7 +187,7 @@
             <div class="circle circle-one"></div>
             <div class="form-container">
                 <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
-                <h1 class="opacity">EMPLOYEE LOGIN</h1>
+                <h1 class="opacity">USER LOGIN</h1>
                 <form id="loginForm">
                     <input type="text" id="eid" placeholder="EMPLOYEE ID" required />
                     <input type="password" id="password" placeholder="PASSWORD" required />
@@ -205,41 +205,41 @@
     <script>
         // Function to handle form submission
         document.getElementById("loginForm").addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); // Prevent the default form submission
 
-            // Get form data
-            const eid = document.getElementById("eid").value;
-            const password = document.getElementById("password").value;
+    // Get form data
+    const eid = document.getElementById("eid").value;
+    const password = document.getElementById("password").value;
 
-            // Prepare the login data object
-            const loginData = {
-                uid: eid,         // Send 'eid' as 'uid' to match backend
-                password: password
-            };
+    // Prepare the login data object
+    const loginData = {
+        uid: eid,         // Send 'eid' as 'uid' to match backend
+        password: password
+    };
 
-            // Send POST request to the backend API for login
-            fetch("http://127.0.0.1:8080/user/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(loginData)
-            })
-                .then(response => response.text()) // Expecting a plain text response (success or error message)
-                .then(data => {
-                    if (data === "Login successful") {
-                        alert("Login successful!");
-                        // Redirect to another page or dashboard, for example:
-                        window.location.href = "/dashboard"; // Update with your actual redirect path
-                    } else {
-                        alert(data); // Display the error message if login fails
-                    }
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                    alert("An error occurred during login. Please try again.");
-                });
+    // Send POST request to the backend API for login
+    fetch("http://127.0.0.1:8080/user/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(loginData)
+    })
+        .then(response => response.text()) // Expecting a plain text response (success or error message)
+        .then(data => {
+            if (data === "Login successful") {
+                alert("Login successful!");
+                // Redirect to the dashboard page after successful login
+                window.location.href = "Dashboard.html"; // Update this URL to the actual dashboard URL
+            } else {
+                alert(data); // Display the error message if login fails
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("An error occurred during login. Please try again.");
         });
+}); 
     </script>
 </body>
 
