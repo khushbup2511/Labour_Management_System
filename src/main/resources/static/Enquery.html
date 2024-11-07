@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Inquiry Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #94c0be;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            width: 90%; /* Adjusted width */
+            max-width: 800px; /* Adjusted max-width */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0c437e;
+        }
+
+        /* Adjustments for smaller screens */
+        @media screen and (max-width: 600px) {
+            form {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<h2>Employment Inquiry Form</h2>
+<form action="submit_form.php" method="POST">
+    <label for="name">Your Name:</label><br>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="email">Your Email:</label><br>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="phone">Your Phone Number:</label><br>
+    <input type="tel" id="phone" name="phone" required><br>
+
+    <label for="work_type">Type of Work:</label><br>
+    <select id="work_type" name="work_type" required>
+        <option value="">Select Work Type</option>
+        <option value="Electrician">Electrician</option>
+        <option value="Cleaning">Cleaning</option>
+        <option value="Plumber">Plumber</option>
+        <option value="Painter">Painter</option>
+        <option value="Carpenter">Carpenter</option>
+        <option value="Carpenter">Construction Worker</option>
+        <option value="Carpenter">ChildCare</option>
+        <option value="Carpenter">Gardener</option>
+        <option value="Carpenter">Watchman</option>
+
+        <!-- Add more options as needed -->
+    </select><br>
+
+    <label for="description">Description of Work:</label><br>
+    <textarea id="description" name="description" required></textarea><br>
+
+    <label for="location">Preferred Working Location:</label><br>
+    <input type="text" id="location" name="location" required><br>
+
+    <label for="duration">Estimated Duration of Employment:</label><br>
+    <input type="text" id="duration" name="duration" required><br>
+
+    <label for="price">Price Range:</label><br>
+    <input type="text" id="price" name="price" required><br>
+
+    <label for="preferences">Additional Requirements or Preferences:</label><br>
+    <textarea id="preferences" name="preferences"></textarea><br>
+
+    <label for="contact_method">Preferred Method of Contact:</label><br>
+    <select id="contact_method" name="contact_method" required>
+        <option value="">Select Contact Method</option>
+        <option value="Email">Email</option>
+        <option value="Phone Call">Phone Call</option>
+        <option value="Text Message">Text Message</option>
+        <!-- Add more options as needed -->
+    </select><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

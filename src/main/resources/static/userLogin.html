@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <style>
+        :root {
+            --background: #1a1a2e;
+            --color: #ffffff;
+            --primary-color: #0f3460;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "poppins";
+            background: var(--background);
+            color: var(--color);
+            letter-spacing: 1px;
+            transition: background 0.2s ease;
+            -webkit-transition: background 0.2s ease;
+            -moz-transition: background 0.2s ease;
+            -ms-transition: background 0.2s ease;
+            -o-transition: background 0.2s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            position: relative;
+            width: 22.2rem;
+        }
+
+        .form-container {
+            border: 1px solid hsla(0, 0%, 65%, 0.158);
+            box-shadow: 0 0 36px 1px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            backdrop-filter: blur(20px);
+            z-index: 99;
+            padding: 2rem;
+        }
+
+        .login-container form input {
+            display: block;
+            padding: 14.5px;
+            width: 100%;
+            margin: 2rem 0;
+            color: var(--color);
+            outline: none;
+            background-color: #9191911f;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            font-size: 15px;
+            backdrop-filter: blur(15px);
+        }
+
+        .login-container form input:focus {
+            box-shadow: 0 0 16px 1px rgba(0, 0, 0, 0.2);
+            animation: wobble 0.3s ease-in;
+        }
+
+        .login-container form button {
+            background-color: var(--primary-color);
+            color: var(--color);
+            display: block;
+            padding: 13px;
+            border-radius: 5px;
+            outline: none;
+            font-size: 18px;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+            margin-bottom: 2rem;
+            transition: all 0.1s ease-in-out;
+            border: none;
+        }
+
+        .login-container form button:hover {
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.15);
+            transform: scale(1.02);
+        }
+
+        .circle {
+            width: 8rem;
+            height: 8rem;
+            background: var(--primary-color);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .illustration {
+            position: absolute;
+            top: -14%;
+            right: -2px;
+            width: 90%;
+        }
+
+        .circle-one {
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transform: translate(-45%, -45%);
+        }
+
+        .circle-two {
+            bottom: 0;
+            right: 0;
+            z-index: -1;
+            transform: translate(45%, 45%);
+        }
+
+        .register-forget {
+            margin: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .opacity {
+            opacity: 0.6;
+        }
+
+        .theme-btn-container {
+            position: absolute;
+            left: 0;
+            bottom: 2rem;
+        }
+
+        .theme-btn {
+            cursor: pointer;
+            transition: all 0.3s ease-in;
+        }
+
+        .theme-btn:hover {
+            width: 40px !important;
+        }
+
+        @keyframes wobble {
+            0% {
+                transform: scale(1.025);
+            }
+
+            25% {
+                transform: scale(1);
+            }
+
+            75% {
+                transform: scale(1.025);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="container">
+        <div class="login-container">
+            <div class="circle circle-one"></div>
+            <div class="form-container">
+                <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" class="illustration" />
+                <h1 class="opacity">EMPLOYEE LOGIN</h1>
+                <form id="loginForm">
+                    <input type="text" id="eid" placeholder="EMPLOYEE ID" required />
+                    <input type="password" id="password" placeholder="PASSWORD" required />
+                    <button type="submit" class="opacity">SUBMIT</button>
+                </form>
+                <div class="register-forget opacity">
+                    <a href="">REGISTER</a>
+                    <a href="">FORGOT PASSWORD</a>
+                </div>
+            </div>
+            <div class="circle circle-two"></div>
+        </div>
+    </section>
+
+    <script>
+        // Function to handle form submission
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get form data
+            const eid = document.getElementById("eid").value;
+            const password = document.getElementById("password").value;
+
+            // Prepare the login data object
+            const loginData = {
+                uid: eid,         // Send 'eid' as 'uid' to match backend
+                password: password
+            };
+
+            // Send POST request to the backend API for login
+            fetch("http://127.0.0.1:8080/user/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(loginData)
+            })
+                .then(response => response.text()) // Expecting a plain text response (success or error message)
+                .then(data => {
+                    if (data === "Login successful") {
+                        alert("Login successful!");
+                        // Redirect to another page or dashboard, for example:
+                        window.location.href = "/dashboard"; // Update with your actual redirect path
+                    } else {
+                        alert(data); // Display the error message if login fails
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("An error occurred during login. Please try again.");
+                });
+        });
+    </script>
+</body>
+
+</html>

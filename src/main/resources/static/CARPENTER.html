@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #669996;
+        }
+        header {
+            background-color: rgb(139, 183, 185);
+            color: #0e0d0d;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            background-color: #067b76;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ffc107;
+        }
+        main {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 25%;
+            max-width: 300px;
+            text-align: center;
+        }
+        .card h3 {
+            color: #333;
+        }
+        .card img {
+            max-width: 100%;
+            height: 200px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: #666;
+        }
+        .card button {
+            background-color: #d31919;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .card button:hover {
+            background-color: #ec2e3e;
+        }
+        footer {
+            background-color: #067b76;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Employee Information</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <main id="employee-list">
+        <!-- Employee data will be inserted here dynamically -->
+    </main>
+    <footer>
+        <p>&copy; 2024 Employee Information. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Fetch employee data from the Spring Boot API
+        fetch('http://localhost:8080/employees/getAllEmployees')  // Adjust the URL if necessary
+            .then(response => response.json())
+            .then(employees => {
+                const mainElement = document.getElementById('employee-list');
+                employees.forEach(employee => {
+                    const card = document.createElement('div');
+                    card.classList.add('card');
+                    card.innerHTML = `
+                        <img src="employee-placeholder.jpg" alt="${employee.name}" />
+                        <div class="card-content">
+                            <h3>${employee.name || 'No Name Available'}</h3>
+                            <p><strong>Employee ID:</strong> ${employee.eid || 'Not Available'}</p>
+                            <p><strong>Mobile:</strong> ${employee.mobile || 'Not Available'}</p>
+                            <p><strong>Location:</strong> ${employee.address || 'Not Available'}</p>
+                            <p><strong>Skill:</strong> ${employee.skill || 'Not Available'}</p>
+                            <p><strong>Aadhaar:</strong> ${employee.aadhaar || 'Not Available'}</p>
+                            <p><strong>Rating:</strong> ${employee.rating || 'Not Available'}</p>
+                        </div>
+                        <button>View Details</button>
+                    `;
+                    mainElement.appendChild(card);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching employee data:', error);
+            });
+    </script>
+</body>
+</html>
